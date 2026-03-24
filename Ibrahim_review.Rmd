@@ -1,0 +1,49 @@
+---
+title: "Tuqa Ibrahim's review"
+author: "Tuqa"
+date: "2026-03-23"
+output: html_document
+---
+
+Your repository looks organized, and I easily found the output files. I think you did a great job!
+I do have some suggestions that you might find useful.
+
+1- I didn't find the rendered version of your R Markdown output file in either HTML or PDF format. I suggest you knit your `BCB5460-R-Assignment-v0.Rmd` to create the PDF or HTML version.
+
+2- For the chromosome files in increasing order, I noticed that the missing data were still encoded as `?/?` while I think the assignment asked us to encode them as `?`. I am not sure though if both are fine.
+
+3- For the chromosome files in decreasing order, I noticed that the missing data were still encoded as `?/?` while the assignment asked us to encode them as `-`.
+
+4- I think it would be a good idea to include further explanation of your workflow and what each code block does and how it works.
+
+5- I suggest including a short comment after each graph summarizing its main result.
+
+6- You can expand your data inspection section a little by checking the class of the data in each column in the position file using `sapply(snp_positions, class)` and in the first 15 columns of the genotypes file, which are a good representation of the others, using `sapply(genotypes[1:15], class)`.
+
+7- It is also a good idea to check the different group names included in the genotypes file to make sure you have the required maize groups (ZMMIL, ZMMLR, and ZMMMR) and teosinte groups (ZMPBA, ZMPIL, and ZMPJA) using `unique(genotypes[[3]])`.
+
+8- For the graph "number of SNPs per chromosome":
+    
+    a- I suggest combining the two groups (Maize and Teosinte) on the same graph for comparison.
+
+    b- You seem to have the same SNP number per chromosome for both (Maize and Teosinte), which is expected because both groups are joined to the same SNP position file. However, not every position represents a truly polymorphic SNP. To address this, we identify the SNP positions that show variation in genotype across individuals. You could check for polymorphic SNPs by testing each SNP row for variation across individuals within the maize group and within the teosinte group. A SNP is classified as a polymorphic SNP if more than one unique genotype is present among individuals. You can then count the polymorphic SNPs per chromosome and visualize them.
+    
+    c- I noticed that chromosome 10 appears between 1 and 2, which is weird to me. I am afraid this might suggest that the Chromosome column may not have been fully cleaned or processed.
+    
+    d- As far as I know, the multiple and unknown positions are not required in this assignment, unlike the UNIX assignment.
+    
+    e- I suggest including a title for the graph.
+    
+9- For the "Proportion of Missing, Homozygous, and Heterozygous Sites per sample":
+    
+    a- I suggest combining the two groups (Maize and Teosinte) on the same graph for comparison.
+    
+    b- I suggest including a title for the graph.
+    
+10- For the "Proportion of Genotype Class Across Chromosomes":
+
+    a- I suggest combining the two groups (Maize and Teosinte) on the same graph for comparison.
+    
+    b- I suggest including a title for the graph.
+
+
